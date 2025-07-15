@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulador de Recuperación en Cocina</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // Cargar el JSON con los datos
+    $(document).ready(function() {
+      $.getJSON("simulacion_datos.json", function(data) {
+        // Mostrar los resultados de la simulación en la interfaz
+        $("#fallas").html("");
+        data.fallas.forEach(function(falla) {
+          let fallaHtml = `<div class="falla">
+                              <h2>${falla.tipo}</h2>
+                              <p>${falla.descripcion}</p>
+                              <p><strong>Recuperación Parcial:</strong> ${falla.recuperacion_parcial}%</p>
+                              <p><strong>Recuperación Completa:</strong> ${falla.recuperacion_completa}%</p>
+                            </div>`;
+          $("#fallas").append(fallaHtml);
+        });
+
+        // Mostrar los resultados generales de recuperación
+        let resultadosHtml = `<h2>Resultados de Recuperación</h2>
+                              <p><strong>Recuperación Parcial:</strong> ${data.resultados.recuperacion_parcial.eficiencia}</p>
+                              <p><strong>Tiempo Promedio (Recuperación Parcial):</strong> ${data.resultados.recuperacion_parcial.tiempo_promedio}</p>
+                              <p><strong>Fricción Operativa (Recuperación Parcial):</strong> ${data.resultados.recuperacion_parcial.friccion_operativa}</p>
+                              <p><strong>Recuperación Completa:</strong> ${data.resultados.recuperacion_completa.eficiencia}</p>
+                              <p><strong>Tiempo Promedio (Recuperación Completa):</strong> ${data.resultados.recuperacion_completa.tiempo_promedio}</p>
+                              <p><strong>Fricción Operativa (Recuperación Completa):</strong> ${data.resultados.recuperacion_completa.friccion_operativa}</p>`;
+        $("#resultados").html(resultadosHtml);
+      });
+    });
+  </script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .falla { margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; }
+    h2 { margin-bottom: 10px; }
+    p { margin: 5px 0; }
+  </style>
+</head>
+<body>
+
+  <h1>Simulador de Recuperación en Cocina</h1>
+
+  <div id="fallas">
+    <!-- Las fallas y resultados se cargarán aquí -->
+  </div>
+
+  <div id="resultados">
+    <!-- Los resultados de recuperación se mostrarán aquí -->
+  </div>
+
+</body>
+</html>

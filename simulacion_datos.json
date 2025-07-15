@@ -1,0 +1,27 @@
+{
+  "fallas": [
+    {
+      "tipo": "Sobrecarga Operativa",
+      "descripcion": "Falta de personal en estación crítica durante horario pico.",
+      "recuperacion_parcial": 53,
+      "recuperacion_completa": 85
+    },
+    {
+      "tipo": "Fallo de Estación (Horno Fuera de Servicio)",
+      "descripcion": "Descompone el horno en 'Comis Caliente'.",
+      "recuperacion_parcial": 50,
+      "recuperacion_completa": 80
+    }
+  ],
+  "resultados": {
+    "recuperacion_parcial": {
+      "eficiencia": "45%"
+  
+
+    },
+    "recuperacion_completa": {
+      "eficiencia": "85%"
+
+    }
+  }
+}
